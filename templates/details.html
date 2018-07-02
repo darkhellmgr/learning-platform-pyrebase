@@ -1,0 +1,47 @@
+<html>
+<header id="header">
+
+hello
+</header>
+<form action=""></form><select name="User" multiple>
+      {%for idslist,namelist in comb_list%}
+      <option value="{{idslist}}" label="{{schoolnames}}">{{namelist}}</option>
+      {%endfor%}
+
+  </select>
+</form>
+<script type="text/javascript">
+var data = JSON.parse('{{jsonobj}}');
+var ids = [];
+var  keys=[];
+console.log(data)
+<!--for findings total id-->
+for(var id in data)
+{
+   ids.push(id);
+}
+<!--for finding total keys-->
+for(var k in data[ids[0]])
+{
+keys.push(k)
+}
+console.log(ids);
+console.log(keys);
+for(x in ids){
+  header=document.getElementById('header')
+  var mydiv = document.createElement('div');
+  mydiv.id=ids[x]
+  var str=ids[x]
+  myurl='/mainapp/allform/Questions/'+str
+  mydiv.innerHTML = '<a href="'+myurl+'"><h1>'+ data[ids[x]][keys[0]]+'</h1>';
+  header.appendChild(mydiv);
+  var myPara = document.createElement('p');
+   for(y in keys)
+   {
+      myPara.innerHTML+= keys[y]+'==' + data[ids[x]][keys[y]]+'<br>'
+    }
+    myPara.innerHTML+='</div>'
+         mydiv.appendChild(myPara);
+  }
+</script>
+</html>

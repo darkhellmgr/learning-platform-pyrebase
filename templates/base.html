@@ -1,0 +1,28 @@
+{% load static %}
+{% if messg %}
+<script>
+    alert('{{ messg }}');
+</script>
+{% endif %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block head %}
+    {% endblock %}
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{% static '/css/style.css' %}" rel = stylesheet>
+    <link href="{% static '/css/admin.css' %}" rel = stylesheet>
+    <script src="{% static '/js/admin.js' %}"></script>
+
+<!-------- For admin panel --------------->
+
+</head>
+<body>
+    {% block body%} {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+<div class="container">
+<form action="" method="post" >
+    {% csrf_token %}
+      <select name="User" multiple>
+      {%for idslist,namelist in comb_list%}
+      <option value="{{idslist}}" label="{{schoolnames}}">{{namelist}}</option>
+      {%endfor%}
+
+  </select>
+    {{form.as_p}}
+
+
+
+<input type="submit" value="submit">
+
+</form>
+    </div>
+{% endblock %}
